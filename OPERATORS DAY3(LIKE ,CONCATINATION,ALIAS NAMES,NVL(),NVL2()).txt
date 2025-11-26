@@ -1,0 +1,558 @@
+                           Like operator
+                         ================
+
+4.like operator:-like operator is used to retrieve data from database based on 
+================ specified pattern in where clause.
+
+   Along with like operator oracle provided 2 special wild card characters.
+These are having special meaning.
+ 
+1)% ---> string or group of characters matching(replaces 0 or 
+                                                any no of characters)
+
+2)_ ---> single character matching purpose(replaces 1 char)
+
+
+Syntax:-
+=======
+ select * from tablename where columnname like 'character pattern';
+
+
+
+1.Write a query to display the employees whose ename start with S 
+   from emp table using like operator?
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE 'S%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+
+_______________________________________________________________________________________
+
+
+
+2.Write a query to display the employees whose ename end with S from
+   emp table using like operator?
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '%S';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+______________________________________________________________________________________
+
+
+
+
+3.Write a query to display the employees whose empno start with
+  76 from emp table by using like operator?
+
+SQL> SELECT * FROM EMP WHERE EMPNO LIKE '76%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+________________________________________________________________________________________
+
+
+
+4.Write a query to display the employees whose ename contain M in any position 
+  from emp table by using like operator?
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '%M%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+__________________________________________________________________________________________
+
+
+
+
+5.Write a query to display the employee records whose name 2nd
+  character is A?
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '_A%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+
+
+_________________________________________________________________________________________
+
+6.Write a query to display the employee records whose name 3rd 
+  character is M?
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '__M%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+________________________________________________________________________________________
+
+
+
+7.Write a query to display the employee records whose name has 4
+  letters from emp table by using like operator?
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '____';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+
+
+__________________________________________________________________________________________
+
+8.Write a query to display the employees who are getting 3 digit
+  salary from emp table by using like operator?
+
+SQL> SELECT * FROM EMP WHERE SAL LIKE '___';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+___________________________________________________________________________________________
+
+
+
+9.Write a query to display the employees who are joining in the year
+  81 from emp table using like operator?
+
+
+SQL> SELECT * FROM EMP WHERE HIREDATE LIKE '%81';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+
+___________________________________________________________________________________________
+
+
+
+
+10.Write a query to display the employees who are joining in the 
+   month DECEMBER from the emp table using like operator?
+
+SQL> SELECT * FROM EMP WHERE HIREDATE LIKE '%DEC%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+__________________________________________________________________________________________
+
+
+
+11.Write a query to display the employees whose name contain either
+  'AM' or 'AR' strings from emp table by using like operator
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '%AM%' OR ENAME LIKE '%AR%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+
+____________________________________________________________________________
+
+
+
+ 
+12.Write a query to display the employee records whose name started
+   and ended with S?
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE 'S%S';
+
+no rows selected
+____________________________________________________________________________________
+
+
+13.Write a query to display the employee records whose name 
+   starting with VOWEL?
+
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE 'A%' OR  ENAME LIKE 'E%' OR  ENAME LIKE 'I%' OR  ENAME LIKE 'O%' OR  ENAME LIKE 'U%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+
+SQL>
+__________________________________________________________________________________________
+
+
+14.Write an SQL query to retrieve all employee names from the table 
+   EMP555 that contain the word 'SIRISHA' ?[INTERVIEW QUESTION]
+
+
+SQL>SELECT * FROM EMP555;
+
+           ENAME
+     ----------------
+      SIRISHA GAYATRI
+      GAYATRI SIRISHA
+      ANUSHKA SHETTY
+      ANU SIRISHA RAI
+      SURYA SURYA
+
+
+CREATE TABLE EMP555
+(
+ENAME VARCHAR2(20)
+);
+
+INSERT INTO EMP555 VALUES('SIRISHA GAYATRI');
+INSERT INTO EMP555 VALUES('GAYATRI SIRISHA');
+INSERT INTO EMP555 VALUES('ANUSHKA SHETTY');
+INSERT INTO EMP555 VALUES('ANU SIRISHA RAI');
+INSERT INTO EMP555 VALUES('SURYA SURYA');
+COMMIT;
+
+
+
+SQL> SELECT * FROM EMP555 WHERE ENAME LIKE '%SIRISHA%';
+
+ENAME
+--------------------
+SIRISHA GAYATRI
+GAYATRI SIRISHA
+ANU SIRISHA RAI
+___________________________________________________________________________________
+
+
+------------------------------------------------------------------------------------------------------
+Mixed Query:-
+===========
+NOTE:-Where clause is used to filters the records in a table. And there
+===== can be only one WHERE clause in every relational databases. if we
+      want filter the data after where then we must use AND operator. 
+
+
+
+
+1.Write a query to display employees who are working as either 'MANAGER' or 'CLERK' 
+   and earning salary between 1500 and 3000 and joined in the year 1981 
+   and are not working in departments 10 or 20 from EMP table ?
+
+SQL> SELECT * FROM EMP WHERE (JOB='MANAGER' OR JOB='CLERK') AND (SAL>=1500 AND SAL<=3000) AND (HIREDATE LIKE '%81') AND (DEPTNO  NOT IN(10,20));
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+_____________________________________________________________________________________
+
+
+
+------------------------------------------------------------------------------------------------------
+                   Concatenation Operator(|| double pipe):
+                   --------------------------------------   
+
+ in relational databases if we want to display strings along with column data
+then we must use concatenation operator.
+
+    it is not a special operator rarely used in SQL and regularly
+used in PL/SQL. 
+
+Ex:-
+===
+sql>select 'GOWTHAM'||'RAJ' from dual;
+
+'GOWTHAM'|
+----------
+GOWTHAMRAJ
+
+1.Write a query to display the empno and a concatenated string showing the
+  employee’s name and salary in the format: "ename earns sal" 
+  from the emp table.
+
+
+EXPECTED OUTPUT:-
+================
+   7369 SMITH  earns  800
+   7499 ALLEN  earns  1600
+   .
+   .
+   7902 FORD   earns  3000
+   7934 MILLER earns  1300
+
+SQL> SELECT ENAME ||' EARNS SAL '|| SAL FROM EMP;
+
+ENAME||'EARNSSAL'||SAL
+-------------------------------------------------------------
+SMITH EARNS SAL 800
+ALLEN EARNS SAL 1600
+WARD EARNS SAL 1250
+JONES EARNS SAL 2975
+MARTIN EARNS SAL 1250
+BLAKE EARNS SAL 2850
+CLARK EARNS SAL 2450
+SCOTT EARNS SAL 3000
+KING EARNS SAL 5000
+TURNER EARNS SAL 1500
+ADAMS EARNS SAL 1100
+JAMES EARNS SAL 950
+FORD EARNS SAL 3000
+MILLER EARNS SAL 1300
+
+14 rows selected.
+_________________________________________________________________________________
+
+
+
+2.display the output as following from emp table by using 
+  concatenation operator 
+
+   SMITH   works as  CLERK
+   ALLEN   works as  SALESMAN
+   .
+   .
+   FORD    works as  ANALYST
+   MILLER  works as  CLERK
+
+SQL> SELECT ENAME ||' works as '|| JOB FROM EMP;
+
+ENAME||'WORKSAS'||JOB
+-----------------------------
+SMITH works as CLERK
+ALLEN works as SALESMAN
+WARD works as SALESMAN
+JONES works as MANAGER
+MARTIN works as SALESMAN
+BLAKE works as MANAGER
+CLARK works as MANAGER
+SCOTT works as ANALYST
+KING works as PRESIDENT
+TURNER works as SALESMAN
+ADAMS works as CLERK
+JAMES works as CLERK
+FORD works as ANALYST
+MILLER works as CLERK
+
+
+14 rows selected.
+____________________________________________________________________________-
+sl
+
+
+------------------------------------------------------------------------------------------------------
+alias names
+===========
+
+1.Write a query to display ENAME as (use aliasname EMP_NAME),SAL,JOB
+  from EMP table and whose salary is greater than 2000
+
+SQL> SELECT  ENAME AS EMP_NAME ,JOB,SAL  FROM EMP WHERE SAL>=2000;
+
+EMP_NAME   JOB              SAL
+---------- --------- ----------
+JONES      MANAGER         2975
+BLAKE      MANAGER         2850
+CLARK      MANAGER         2450
+SCOTT      ANALYST         3000
+KING       PRESIDENT       5000
+FORD       ANALYST         3000
+
+6 rows selected.
+_______________________________________________________________________________
+
+
+
+
+2.Write an sql query to display the first name(use alias name staff first name ),position and
+  salary of staff members where salary is greater than 50000 ?[INTERVIEW QUESTION] 
+
+ 
+
+your output should have three columns as given below
+
+STAFF FIRST NAME    POSITION       SALARYS
+CREATE TABLE STAFF (
+    STAFF_ID NUMBER(10),
+    FIRST_NAME VARCHAR2(20),
+    LAST_NAME VARCHAR2(20),
+    POSITION VARCHAR2(10),
+    SALARY NUMBER(10)
+);
+
+INSERT INTO STAFF VALUES(1, 'ANUSHKA', 'SHETTY', 'MANAGER', 60000);
+INSERT INTO STAFF VALUES(2, 'KIRAN', 'KUMAR', 'DEVELOPER', 48000);
+INSERT INTO STAFF VALUES(3, 'GOWTHAM', 'RAJ', 'TEAM LEAD', 75000);
+INSERT INTO STAFF VALUES(4, 'KAVYA', 'PAPA', 'HR', 51000);
+INSERT INTO STAFF VALUES(5, 'PREETI 'ZINTA', 'CLERK', 30000);
+COMMIT;
+
+SQL>SELECT * FROM STAFF;
+
+
+
+
+
+
+3.Write an SQL query to display the NAME(use alias USERNAME) and their email (use alias EMAILID) 
+  of users who have a phone number ending with '29' 
+  from the USERS table?[COGNIZENT INTERVIEW QUESTION]                                                                                         
+
+
+USERS
+USER_ID    NAME     EMAIL       PHONE_NUMBER
+
+
+ Your output should have 2 columns as given below
+
+   USERNAME      EMAILD
+
+
+CREATE TABLE USERS (
+    USER_ID NUMBER(10),
+    NAME VARCHAR2(15),
+    EMAIL VARCHAR2(20),
+    PHONE_NUMBER VARCHAR2(15)
+);
+
+INSERT INTO USERS VALUES(1, 'ANUSHKA', 'anushka@gmail.com', '9876526229');         
+INSERT INTO USERS VALUES(2, 'GOWTHAM', 'gowtham@gmail.com', '9912347810');
+INSERT INTO USERS VALUES(3, 'SURYA',   'surya@gmail.com',   '9988776629'); 
+INSERT INTO USERS VALUES(4, 'KAVYA PAPA','kavya@gmail.com', '9988776655');
+COMMIT;
+
+SQL>SELECT * FROM USERS;
+
+------------------------------------------------------------------------------------------------------
+                              NVL & NVL2 FUNCTIONS
+                             ======================= 
+ 
+1.Write a SQL query to display the employee name, sal, comm, and total salary (sal + comm) 
+  of all employees from emp table ?
+
+SQL> SELECT
+  2      ename,
+  3      sal,
+  4      comm,
+  5      sal + NVL(comm, 0) AS total_salary
+  6  FROM emp;
+
+ENAME             SAL       COMM TOTAL_SALARY
+---------- ---------- ---------- ------------
+SMITH             800                     800
+ALLEN            1600        300         1900
+WARD             1250        500         1750
+JONES            2975                    2975
+MARTIN           1250       1400         2650
+BLAKE            2850                    2850
+CLARK            2450                    2450
+SCOTT            3000                    3000
+KING             5000                    5000
+TURNER           1500          0         1500
+ADAMS            1100                    1100
+
+ENAME             SAL       COMM TOTAL_SALARY
+---------- ---------- ---------- ------------
+JAMES             950                     950
+FORD             3000                    3000
+MILLER           1300                    1300
+
+14 rows selected.
+_________________________________________________________________________________
+
+
+2.Update the employee commission with in emp table by using nvl2() 
+  based on following conditions?
+
+1.if comm-->null then update
+     comm-->500
+
+2.if comm-->not null then update
+     comm-->comm+500
+
+SQL> UPDATE emp
+  2  SET comm = NVL2(comm, comm + 500, 500);
+
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800       1000         20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600       1300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250       1500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975       1000         20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       2400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850       1000         30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450       1000         10
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000       1000         20
+      7839 KING       PRESIDENT            17-NOV-81       5000       1000         10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500       1000         30
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100       1000         20
+      7900 JAMES      CLERK           7698 03-DEC-81        950       1000         30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000       1000         20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300       1000         10
+
+
+
+After executing the update command see the output use ROLLBACK command
+
+
+SQL> ROLLBACK;
+________________________________________________________________________________
+Rollback complete.
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+
+
+
+
+
+
+
+
+
+
