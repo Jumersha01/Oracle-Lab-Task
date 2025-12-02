@@ -1,0 +1,257 @@
+1. Which of the following is NOT a DDL command in Oracle?
+
+   a) CREATE
+   b) ALTER
+   c) SELECT
+   d) DROP
+
+   Answer: c) SELECT
+
+
+2. What does DDL stand for in Oracle?
+
+   a) Data Deleting Language
+   b) Data Definition Language
+   c) Data Delegating Language
+   d) Dummy Data Language
+
+   Answer: b) Data Definition Language
+
+
+3. Which DDL command is used to remove a table from the database permanently?
+
+   a) TRUNCATE
+   b) DROP
+   c) DELETE
+   d) REMOVE
+
+   Answer: b) DROP
+
+
+4. Which command is used to change the structure of an existing table?
+
+   a) CHANGE
+   b) ALTER
+   c) MODIFY
+   d) UPDATE
+
+   Answer: b) ALTER
+
+
+5. The TRUNCATE command in Oracle is used to:
+
+   a) Remove all rows from a table without logging individual row deletions
+   b) Remove the table structure
+   c) Remove a column
+   d) Change a column’s datatype
+
+   Answer: a) Remove all rows from a table without logging individual row deletions
+
+
+6. Which of the following commands can be used to rename a table in Oracle?
+
+   a) RENAME
+   b) CHANGE
+   c) ALTER
+   d) UPDATE
+
+   Answer: a) RENAME
+
+
+7. What is the effect of the DROP command on a table?
+
+   a) Deletes all rows but keeps the structure
+   b) Deletes the table structure and data
+   c) Only deletes data
+   d) Renames the table
+
+   Answer: b) Deletes the table structure and data
+
+
+8. Which DDL command is used to add a new column to an existing table?
+
+   a) INSERT
+   b) ADD
+   c) ALTER
+   d) CREATE
+
+   Answer: c) ALTER
+
+
+9. Which of the following statements contains an error?
+
+   A. select * from emp where empid=1003;
+   B. select empid from emp where empid=1006;
+   C. select empid from emp;
+   D. select empid where empid=1009 and firstname='ANUSHKA';
+
+   Answer: D
+
+
+10. Which operator in Oracle is used to compare two values for equality?
+
+    a) =
+    b) ==
+    c) :=
+    d) EQ
+
+    Answer: a) =
+
+
+11. The ‘||’ operator in Oracle is used for:
+
+    a) Addition
+    b) Concatenation
+    c) Subtraction
+    d) Division
+
+    Answer: b) Concatenation
+
+
+12. Which operator is used to check if a value exists in a list of values?
+
+    a) LIKE
+    b) IN
+    c) BETWEEN
+    d) EXISTS
+
+    Answer: b) IN
+
+
+13. Which of the following statements is true about DDL commands?
+
+    a) They can be rolled back
+    b) They implicitly commit transactions
+    c) They only affect data, not structure
+    d) They are not logged
+
+    Answer: b) They implicitly commit transactions
+
+
+14. Which DDL command is used to remove all rows from a table but keep the structure?
+
+    a) DROP
+    b) DELETE
+    c) TRUNCATE
+    d) REMOVE
+
+    Answer: c) TRUNCATE
+
+
+15. Which operator is used to check for NULL values in Oracle?
+
+    a) = NULL
+    b) IS NULL
+    c) == NULL
+    d) EQ NULL
+
+    Answer: b) IS NULL
+
+
+16. What is the result of:
+
+       ALTER TABLE employees DROP COLUMN salary;
+
+    a) Drops the employees table
+    b) Drops the salary column from employees table
+    c) Drops all data from employees table
+    d) Drops all columns except salary
+
+    Answer: b) Drops the salary column from employees table
+
+
+17. The BETWEEN operator in Oracle is used to:
+
+    a) Check if a value matches a pattern
+    b) Check if a value falls within a range
+    c) Check if a value is NULL
+    d) Concatenate two strings
+
+    Answer: b) Check if a value falls within a range
+
+
+18. Which command would you use to change the datatype of a column in a table?
+
+    a) ALTER TABLE MODIFY
+    b) ALTER TABLE CHANGE
+    c) UPDATE TABLE
+    d) RENAME COLUMN
+
+    Answer: a) ALTER TABLE MODIFY
+
+
+19. Which of the following is NOT a valid operator in Oracle SQL?
+
+    a) +
+    b) -
+    c) *
+    d) %%
+
+    Answer: d) %%
+
+
+20. What is the main difference between DROP and TRUNCATE commands?
+
+    a) DROP removes only data, TRUNCATE removes structure
+    b) DROP removes structure and data, TRUNCATE removes only data
+    c) DROP can be rolled back, TRUNCATE cannot
+    d) TRUNCATE is slower than DROP
+
+    Answer: b) DROP removes structure and data, TRUNCATE removes only data
+
+
+----------------------------------------------------------
+                     SQL QUERIES
+----------------------------------------------------------
+
+1. CREATE TABLE employees (
+       emp_id NUMBER,
+       emp_name VARCHAR2(15),
+       salary NUMBER
+   );
+
+2. INSERT INTO employees VALUES (1,'RAM',3000);
+   INSERT INTO employees VALUES (2,'SAM',4000);
+   INSERT INTO employees VALUES (3,'TOM',3500);
+   INSERT INTO employees VALUES (4,'RAJU',2800);
+   INSERT INTO employees VALUES (5,'ANU',5000);
+
+3. ALTER TABLE employees ADD department_id NUMBER;
+
+4. ALTER TABLE employees MODIFY emp_name VARCHAR2(20);
+
+5. RENAME employees TO staff;
+
+6. ALTER TABLE staff DROP COLUMN department_id;
+
+7. DROP TABLE staff;
+
+8. TRUNCATE TABLE employees;
+
+9. SELECT * FROM employees
+     WHERE department_id IN (10,20,30);
+
+10. SELECT * FROM employees
+      WHERE salary BETWEEN 3000 AND 5000;
+
+11. SELECT * FROM employees
+      WHERE emp_name LIKE 'A%';
+
+12. SELECT emp_id,
+          emp_name || ' earns ' || salary AS info
+     FROM employees;
+
+13. SELECT name
+     FROM EMP555
+     WHERE name LIKE '%SIRISHA%';
+
+14. SELECT ename AS EMP_NAME, sal, job
+     FROM emp
+     WHERE sal > 2000;
+
+15. SELECT *
+     FROM emp
+     WHERE job IN ('MANAGER','CLERK')
+       AND sal BETWEEN 1500 AND 3000
+       AND TO_CHAR(hiredate,'YYYY')='1981'
+       AND deptno NOT IN (10,20);
