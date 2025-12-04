@@ -1,0 +1,337 @@
+                          Functions Task
+                         =================
+ *
+***Dual :- Dual is an oracle predefined virtual table which contains only
+ *         one row and one column. Dual table is used to test oracle
+           predefined, user defined functions functionality.
+
+
+    when ever we are installing oracle server then automatically
+dual table is created with in SYS user but we are allowed to use
+dual table in all other users in oracle database.
+
+
+
+ *
+***Note:- in oracle by default datatype of the dual table column
+ * =====     is varchar2.
+
+ 
+SQL> select * from dual;
+
+     D    ------->dummy column
+   -----
+     X
+
+SQL>desc dual;
+
+ Name                Type
+-------          ------------
+ DUMMY            VARCHAR2(1)
+
+
+
+Testing predefined functions functionality:-
+==========================================
+EX:-
+==
+sql>select nvl(null,40) from dual;
+   
+             40
+
+sql>select nvl(20,30) from dual;
+
+             20
+
+     by using dual table we can also perform mathematical
+operations.
+ 
+
+Eg:-
+===
+SQL> select 100+200 from dual; //one value as result &
+                                 work with non table data.
+
+•When we want to get one value as result and we want to work with 
+ non table values then use dual.
+
+-----------------------------------------------------------------------------------
+                          CHARACTER FUNCTIONS
+                         =====================
+
+1.Write a query to display employee names to uppercase in 
+  emp table 
+SQL> SELECT ENAME ,UPPER(ENAME) FROM EMP;
+
+ENAME      UPPER(ENAM
+---------- ----------
+SMITH      SMITH
+ALLEN      ALLEN
+WARD       WARD
+JONES      JONES
+MARTIN     MARTIN
+BLAKE      BLAKE
+CLARK      CLARK
+SCOTT      SCOTT
+KING       KING
+TURNER     TURNER
+ADAMS      ADAMS
+JAMES      JAMES
+FORD       FORD
+MILLER     MILLER
+ __________________________________________________________________________________________
+
+2.Write a query to display all employee names from the emp table
+  in lowercase.
+
+
+SQL> SELECT ENAME ,LOWER(ENAME) FROM EMP;
+
+ENAME      LOWER(ENAM
+---------- ----------
+SMITH      smith
+ALLEN      allen
+WARD       ward
+JONES      jones
+MARTIN     martin
+BLAKE      blake
+CLARK      clark
+SCOTT      scott
+KING       king
+TURNER     turner
+ADAMS      adams
+JAMES      james
+FORD       ford
+MILLER     miller
+________________________________________________________________________________
+
+3.Update all item names in the ITEM table to upper case
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 smith      CLERK           7902 17-DEC-80        800                    20
+      7499 allen      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 ward       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 jones      MANAGER         7839 02-APR-81       2975                    20
+      7654 martin     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 blake      MANAGER         7839 01-MAY-81       2850                    30
+      7782 clark      MANAGER         7839 09-JUN-81       2450                    10
+      7788 scott      ANALYST         7566 09-DEC-82       3000                    20
+      7839 king       PRESIDENT            17-NOV-81       5000                    10
+      7844 turner     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 adams      CLERK           7788 12-JAN-83       1100                    20
+      7900 james      CLERK           7698 03-DEC-81        950                    30
+      7902 ford       ANALYST         7566 03-DEC-81       3000                    20
+      7934 miller     CLERK           7782 23-JAN-82       1300                    10
+
+  _______________________________________________________________________________________
+
+4.What is the output of the following query
+
+SQL>SELECT INITCAP('ab cd ef') from dual;
+
+a) AB CD EF
+
+b) Ab Cd Ef
+
+c) Ab cd ef
+
+d) ab cd ef
+
+
+Answer:-b) Ab Cd Ef
+
+_____________________________________________________________________________________________
+
+5.Write a query to display the employee records whose names having 4 characters
+  by using length function from emp table?
+SQL> SELECT * FROM  EMP WHERE LENGTH(ENAME)>=4 ;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 smith      CLERK           7902 17-DEC-80        800                    20
+      7499 allen      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 ward       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 jones      MANAGER         7839 02-APR-81       2975                    20
+      7654 martin     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 blake      MANAGER         7839 01-MAY-81       2850                    30
+      7782 clark      MANAGER         7839 09-JUN-81       2450                    10
+      7788 scott      ANALYST         7566 09-DEC-82       3000                    20
+      7839 king       PRESIDENT            17-NOV-81       5000                    10
+      7844 turner     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 adams      CLERK           7788 12-JAN-83       1100                    20
+      7900 james      CLERK           7698 03-DEC-81        950                    30
+      7902 ford       ANALYST         7566 03-DEC-81       3000                    20
+      7934 miller     CLERK           7782 23-JAN-82       1300                    10
+
+________________________________________________________________________________________SLE
+
+6.Write a query to display the employee name and the length of each name
+  from the emp table by using appropriate character function ?
+
+SQL> SELECT ENAME,LENGTH(ENAME) AS CHARACTER  FROM EMP;
+
+ENAME       CHARACTER
+---------- ----------
+smith               5
+allen               5
+ward                4
+jones               5
+martin              6
+blake               5
+clark               5
+scott               5
+king                4
+turner              6
+adams               5
+james               5
+ford                4
+miller              6
+
+14 rows selected.
+
+SQL>
+
+____________________________________________________________________________________________
+
+7.Write a query to display the employees records whose ename length
+  is more than 5 characters from emp table by using length() function?
+
+SQL> SELECT * FROM  EMP WHERE LENGTH(ENAME)>5 ;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7654 martin     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7844 turner     SALESMAN        7698 08-SEP-81       1500          0         30
+      7934 miller     CLERK           7782 23-JAN-82       1300                    10
+____________________________________________________________________________________________
+
+NOTE:-length function returns total length of string including 
+=====       spaces.
+
+
+8.What the o/p of the following
+
+SQL>select length('AB CD') from dual;
+
+A. 4
+
+B. 5
+
+C. 6
+
+D. None of the above
+
+Answer:-B. 5
+
+
+9.Check the following lpad() and rpad() queries output
+
+SQL>select lpad('kiran',10,'#") from duaSQL>select lpad('kiran',10,'#") from dual;l;
+LPAD('KIRA
+----------
+#####kiran
+
+
+SQL>select lpad('gowtham',10,'$@') from dual;
+LPAD('GOWT
+----------
+$@$gowtham
+
+SQL>
+
+SQL>select lpad('X',4,'X') from dual;
+LPAD
+----
+XXXX
+
+
+•The total length specified is 4  
+
+•The original string length is 1 (because 'X' is a single character)
+
+•Total length-string length = 4-1
+                            =  3 
+  
+•3 X's will be printed on left side of the 
+ given string. 
+
+•Since the original string is already 'X', after padding with 3 'X's on the left,
+ the output becomes 'XXXX'
+
+output:-
+=======
+XXXX
+
+
+
+SQL>select rpad('ABCD',10,'#')from dual;
+RPAD('ABCD
+----------
+ABCD######
+
+SQL>
+_______________________________________________________________________
+
+SQL>select rpad('kiran',10)||'hello' from dual;
+
+RPAD('KIRAN',10
+---------------
+kiran     hello
+
+SQL>
+SQL>select rpad(ename,20)||sal from emp;
+RPAD(ENAME,20)||SAL
+----------------------------------------------------------------------------------------------------
+smith               800
+allen               1600
+ward                1250
+jones               2975
+martin              1250
+blake               2850
+clark               2450
+scott               3000
+king                5000
+turner              1500
+adams               1100
+james               950
+ford                3000
+miller              1300
+
+
+
+10.Check the following queries outputs
+ 
+
+SQL> select ltrim('SSMISSTHSS','S')from dual;
+
+LTRIM('S
+--------
+MISSTHSS
+
+
+SQL>select ltrim('     GOWTHAM     ') from dual;
+
+LTRIM('GOWTH
+------------
+GOWTHAM
+
+
+SQL>select rtrim('SSMISSTHSS','S') from dual;
+
+RTRIM('S
+--------
+SSMISSTH
+
+SQL>select trim( '*' from '*****GOWTHAM*****') from dual;
+SQL> select trim( '*' from '*****GOWTHAM*****') from dual;
+
+TRIM('*
+-------
+GOWTHAM
+
+
+
+
+
+
