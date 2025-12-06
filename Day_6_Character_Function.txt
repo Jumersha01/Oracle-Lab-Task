@@ -1,0 +1,330 @@
+                                  CHARACTER FUNCTIONS
+                                ======================
+
+ *
+***Substr():- It will extract portion of the string within given
+ * ========        string based on last two parameters.
+
+
+Syntax:-
+========
+substr(columnname ,    substring position,   no of characters from position);
+          (or)           |->where to start          |->how many characters
+      string name                                      from that position onwards
+                                          
+
+
+Starting position-> can be +ve or –ve
+Starting position and no of characters position-> must be numbers
+
+
+1.Check the following substr() queries output
+
+
+SQL>select substr('ABCDEFGH',2,3) from dual;
+
+SUB
+---
+BCD
+_______________________________________________________
+
+SQL> select substr('ABCDEFGH',-2,3) from dual; 
+
+
+SU
+--
+GH
+__________________________________________________________________
+
+SQL> select substr('ABCDEFGH',-5,1) from dual;
+
+
+S
+-
+D
+
+___________________________________________________________________
+SQL>select substr('GOWTHAM RAJ',1,7) from dual;
+
+SUBSTR(
+-------
+GOWTHAM
+___________________________________________________________________
+
+
+SQL> select substr('GOWTHAM RAJ',9) from dual;
+
+SUB
+---
+RAJ
+
+_________________________________________________________________
+         
+SQL>select substr('GOWTHAM RAJ',4,4) from dual;
+
+SQL> select substr('GOWTHAM RAJ',4,4) from dual;
+
+SUBS
+----
+THAM
+_________________________________________________________
+
+SQL>select substr('GOWTHAM RAJ',-1) from dual;
+S
+-
+J
+_____________________________________________________________
+
+
+
+SQL> select substr('GOWTHAM RAJ',-3,4) from dual;
+
+SUB
+---
+RAJ
+
+SQL>
+_____________________________________________________________
+
+SQL>select substr('GOWTHAM RAJ',-8) from dual;
+
+
+SUBSTR('
+--------
+THAM RAJ
+_____________________________________________________________________
+2.Write a query to display AMEERPET from 'AMEERPET HYDERABAD' string.
+
+SQL> select substr('Ameerpet Hydrabad',1,8) from dual;
+
+SUBSTR('
+--------
+Ameerpet
+__________________________________________________________________________
+
+
+3.Write an SQL query to display the employee name and also display the first 4 characters 
+  of each employee’s name from the EMP table.
+
+ENAME      SUBSTR(ENAME,1,4
+---------- ----------------
+JAMES      JAME
+FORD       FORD
+MILLER     MILL
+
+
+__________________________________________________________________________________________
+4.Write a query to display employee name and genereate MAILID by using the first 4 
+  characters of  employee's name and last 2 digits of their joining year
+  and appending '@tcs.com' at the end,from EMP table ?[INTERVIEW QUESTION]
+ SELECT ename,
+  2         SUBSTR(ename, 1, 4)
+  3         || SUBSTR(TO_CHAR(hiredate, 'YYYY'), 3, 2)
+  4         || '@tcs.com' AS email
+  5  FROM emp;
+
+ENAME      EMAIL
+---------- --------------------------------
+SMITH      SMIT80@tcs.com
+ALLEN      ALLE81@tcs.com
+WARD       WARD81@tcs.com
+JONES      JONE81@tcs.com
+MARTIN     MART81@tcs.com
+BLAKE      BLAK81@tcs.com
+CLARK      CLAR81@tcs.com
+SCOTT      SCOT82@tcs.com
+KING       KING81@tcs.com
+TURNER     TURN81@tcs.com
+ADAMS      ADAM83@tcs.com
+
+ENAME      EMAIL
+---------- --------------------------------
+JAMES      JAME81@tcs.com
+FORD       FORD81@tcs.com
+MILLER     MILL82@tcs.com
+
+
+
+5.Write a query to display the employees whose ename 2nd letter would be 'LA'
+   from emp table using substr() function?
+SQL> select ename  from emp where  substr(ename,2,3)='LL';
+
+
+
+6.Write a query to display employee records whose name started with M 
+   by using substr() function from emp table?
+ENAME
+----------
+MARTIN
+MILLER
+
+
+
+7.Write a query to display employee records whose names are started with vowel 
+   by using substr() function from emp table?
+
+SQL> select * FROM EMP WHERE SUBSTR(ENAME,1,1) IN('A','E','I','O','U');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+
+
+
+
+8.Write a query to display employee records whose name started and end with same letter
+   by using substr() function from emp table?
+
+SQL> select * FROM EMP WHERE SUBSTR(ENAME,1,1)=SUBSTR(ENAME,-1,1);
+
+
+9.Write a query to display employee records whose name started and end with vowel letter 
+   by using substring function from emp table?
+select * FROM EMP WHERE SUBSTR(ENAME,1,1) IN('A','E','I','O','U') AND SUBSTR(ENAME,-1,1) IN ('A','E','I','O','U');
+
+
+
+10.Select SUBSTR('NARESH IT,HYDERABAD',1,9) from dual;
+
+
+a) NARESH            
+
+b) IT
+
+c) NARESH IT    
+
+d) HYDERABAD
+
+
+Answer:-c) NARESH IT
+
+
+11.Create the table person123 as below
+
+    pname                 dob           
+  -------------       ----------       
+  kiran kumar         30-JUN-96
+  anushka shetty      12-DEC-88
+  gowtham raj         01-JAN-97
+  abishek sharma      16-APR-99
+  shreyas iyer        22-SEP-94
+
+
+--->After inserting the records. add a new column password
+    by using alter with add
+
+
+SQL> UPDATE PERSON123 SET PASSWORD ='ANUS88' WHERE PNAME='ANUSHAK SHETTY';
+ 
+--->Set the password as first 4 letters of the person name and last 2 digits of the birth year
+    from the dob column
+   
+
+
+EXPECTED OUTPUT:-
+===============
+
+      PASSWORD
+    -----------
+      kira96
+      anus88
+      gowt97
+      abis99
+      shre94
+
+
+
+
+
+12.Generate the message if the account number is 1234567473 
+
+EXPECTED OUTPUT:
+================
+Amount debited from XXXXXX7473
+
+
+
+
+
+ *
+***Translate() and Replace():-
+ * =========================
+
+Translate() is used to replaces character by character 
+where as replace() is used to replaces character by string (or)
+string by string.
+
+
+13.Check the following Translate() and Replace() queries output
+
+
+SQL> select translate('india','in','xy'),replace('india','in','xy') from dual;
+
+
+
+SQL> select translate('JOHN','H','N') from dual;
+
+
+
+SQL> select replace('JOHN','H','N') from dual;
+
+
+
+SQL> select translate('JOHN','H','AMMERPET') from dual;
+
+
+
+SQL> select replace('JOHN','H','AMMERPET') from dual;
+
+
+
+SQL> select translate('ABCDEF','FEDCBA','123456') from dual;
+
+
+
+SQL> select translate('ABC','BCA','$#@') from dual;
+
+
+
+SQL> select replace('A B C',' ','india')from dual;
+
+
+14.What is output of the below query ?
+
+Select Replace( 'JACK AND JUE', 'J', 'BL' ) FROM DUAL;
+
+a)BLACK AND BLUE  
+
+b) BLCK AND BLUE       
+
+c)BACK AND JUE	         
+
+d) None of the Above
+
+Answer:
+
+
+
+
+Note: in oracle whenever we are not specifying third parameter then specified character or
+===== specified string in 2nd parameter permanently removed from the given first parameter.
+
+
+SQL> select replace('SSMISSTHSS','S') from dual;
+
+
+
+SQL> select replace('SSMISSTHS','THS') from dual;
+
+
+
+
+15.Write a query which count number of occurences of the character E within given string
+   SLEEP by using length(),replace()functions?
+
+
+
+
+
+
