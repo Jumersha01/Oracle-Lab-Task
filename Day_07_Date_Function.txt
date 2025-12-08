@@ -1,0 +1,203 @@
+                            CHARACTER FUNCTIONS
+                          ======================
+
+
+1.Check following instr() queries outputs
+
+
+instr():-it is used to check whether the substring is existed 
+=======         in the given string or not.
+
+
+•if sub string is existed in the given string, it returns the position.
+
+•if sub string is not existed in the given string ,it returns 0.
+
+
+syntax: instr(columnname(or)string , sub string, searching position,
+======            No of occurrences from searching position);
+
+
+Searching position -> +ve or –ve
+Searching and No of occurrences -> must be numbers.
+
+
+         always instr() returns position based on last 2 parameters. 
+but oracle server counts number of characters always left side first 
+position onwards.
+
+
+
+SQL> select instr('ABCDEFGHCDKMNBCDJ','CD',1,1) from dual;
+
+
+
+SQL> select instr('ABCDEFGHCDKMNBCDJ','CD',5,2) from dual;
+
+
+
+SQL> select instr('ABCDEFGHCDKMNBCDJ','CD',-5,2) from dual;
+
+
+
+SQL> select instr('krishna stami lord krishna jai krishna','krishna',1,2) from dual;
+
+
+
+SQL> select instr('krishna stami lord krishna jai krishna','krishna',-1,3) from dual;
+
+
+
+SQL> select instr('gowtham raj','raj') from dual;
+
+
+
+SQL> select instr('gowtham raj','sai') from dual;
+
+
+
+SQL> select instr('ABC*D','*') from dual; // it returns the position of the 
+                                             delemiters(special characters)
+
+
+2.Write a query to check whether the substring 'radha' is exists in the given string or not
+
+Given string: krishna stami lord krishna jai krishna
+
+SQL> select instr(' krishna stami lord krishna jai krishna','Radha') from dual;
+
+INSTR('KRISHNASTAMILORDKRISHNAJAIKRISHNA','RADHA')
+--------------------------------------------------
+                                                 0
+_____________________________________________________________________________________
+
+
+
+
+
+3.Find 4th apperence of 'a' in the string 'Maharashtraa'[INTERVIEW QUESTION]
+
+SQL> select instr(' Maharashtraa','a',1,4) from dual;
+
+INSTR('MAHARASHTRAA','A',1,4)
+-----------------------------
+                           12
+_________________________________________________________________________
+
+
+4.Write a query which is used to retrieve first part(before first .)
+  from the MAILID column in the EMAILS table by using
+  substr(),instr() functions 
+
+
+create table emails
+(
+mailid varchar2(30)
+);
+
+insert into emails values('abc.xyz@gmail.com');
+insert into emails values('pqrst.kkkk@gmail.com');
+commit;
+
+
+
+
+SQL>SELECT * FROM EMAILS;
+
+    MAILID
+  ----------
+  abc.xyz@gmail.com
+  pqrst.kkkk@gmail.com
+
+
+
+SQL> select substr(mailid,1,instr(mailid,'.',1,1)-1) from emails;
+
+SUBSTR(MAILID,1,INSTR(MAILID,'.',1,1)-1)
+--------------------------------------------------------------------------------
+abc
+pqrst
+
+
+------------------------------------------------------------------------------------------------------
+                              Date Functions Task
+                            =======================
+
+1.Write a query to display current system date?
+
+SQL> select sysdate from dual;
+
+SYSDATE
+---------
+08-DEC-25
+
+_____________________________
+2.Write query to display the current system date and time?
+
+SQL> select systimestamp from dual;
+
+SYSTIMESTAMP
+---------------------------------------------------------------------------
+08-DEC-25 11.31.35.700000 AM -12:00
+
+
+___________________________________________________________________
+3.Write a query to display last date of the current month?
+
+SQL> select to_char(last_day(sysdate),'dd') from dual;
+
+TO
+--
+31
+_______________________________________________________
+
+4.Write a query to display last date of the month from the
+  given date 16-APR-2024?
+SQL> select to_char(last_day('16-APR-2024'),'dd') from dual;
+
+TO
+--
+30
+_____________________________________________________________
+
+5.Write a query to display next month first date?
+
+SQL> select to_char(last_day(sysdate)+1) from dual;
+
+TO_CHAR(LAST_DAY(S
+------------------
+01-JAN-26
+______________________________________________________________________
+
+6.Write a query to display first date of the current month by using 
+  sysdate,add_months(),last_day() functions?
+
+SQL> select last_day(add_months(sysdate,-1))+1 from dual;
+
+LAST_DAY(
+---------
+01-DEC-25
+____________________________________________________________
+
+7.Write a query to display next Friday's date?
+SQL> select next_day(sysdate,'friday') from dual;
+
+NEXT_DAY(
+---------
+12-DEC-25
+___________________________________________________________
+
+
+8.Write a query to display next month first sunday date?
+
+SQL> select next_day(add_months(sysdate,1),'sunday') from dual;
+
+NEXT_DAY(
+---------
+11-JAN-26
+
+
+
+
+
+
