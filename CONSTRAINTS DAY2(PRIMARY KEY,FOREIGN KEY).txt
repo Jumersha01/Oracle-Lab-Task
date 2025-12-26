@@ -1,0 +1,101 @@
+                              CONSTRAINTS TASK
+                           =====================
+
+4.Foreign Key:-in all relational databases If we want to establishes relationship
+=============  between tables then we are using referential integrity
+               constraint Foreign Key.
+
+
+    Generally One table foreign key must belongs to another table
+primary key. And also these primary key, foreign key columns must
+belong to same datatype.
+
+
+   Always foreign key values based on related primary key values only.
+Generally primary key doesn't accepts duplicate, null values where as
+foreign key accepts duplicate, null values.
+
+
+Column level:-(References)
+=============
+Syntax:-
+=======
+create table tablename(col1 datatype(size) references mastertablename(primarycolumnname).....);
+
+EX:-
+===
+
+SQL> create table t5(sno number(10) primary key, name varchar2(10));//master table
+
+    Table created
+
+SQL> create table t7(sno number(10) references t5); //child table
+                                                |--->mastertablename
+                    Or
+
+SQL> create table g4(x number((10) references t5(sno));
+                                               |--->mastertablename
+
+
+Table Level: (Foreign key, references)
+===========
+Syntax:-
+========
+create table tablename(col1 datatype(size),col2 datatype(size),.........., foreign
+                       key(col1,col2,.......) references mastertablename(primarykeycolnames));
+
+
+
+------------------------------------------------------------------------------------------------------
+
+1.Establish the relationship between COURSES123 and STUDENTS123 table by using
+  Primary key, Foreign key with the following Rules
+
+
+--->after creating the tables insert the records and observe
+    the outputs.
+
+COURSES123 Table Rules:-
+
+1.cid does not accept null values and duplicate values
+
+2.cname does not accept null values
+
+
+STUDENTS123 Table Rules:-
+
+1.sid doesn't accept null values and duplicate values
+
+2.sname doesn't accept nulls
+
+3.cid should present in courses table cid column
+
+
+
+
+
+2.Establish the relationship between DOCTORS and PATIENTS table by using
+  Primary key, Foreign key
+
+
+DOCTORS                                        PATIENTS
+=======                                        ==========
+    PK                                                                FK
+ DOCTORID     DNAME    SPECIALTY                PATIENTID    PNAME    DOCTORID 
+
+ 
+
+
+
+3.Create the EMP5 table with following columns. and you only think
+  which constraint is suitable at the time of table creation it self
+  and use all constraints(SQL SERVER MOCK INTERVIEW QUESTION)
+
+NOTE:-for this question just create the table with constraints
+       is enough.
+
+EMPNO     ENAME     SAL     MGRNO     AGE     ADDRESS    PHONO
+
+
+
+
